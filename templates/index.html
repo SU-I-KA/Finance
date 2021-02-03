@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+   Portfolio
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>TOTAL</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td colspan="4"></td>
+                <td>{{usd(grandtotal)}}</td>
+            </tr>
+        </tfoot>
+        <tbody>
+            {% for smb in col %}
+                <tr>
+                    <td>{{smb["symbol"]}}</td>
+                    <td>{{smb["name"]}}</td>
+                    <td>{{smb["shares"]}}</td>
+                    <td>{{usd(lookup(smb["symbol"])["price"])}}</td>
+                    <td>{{usd((lookup(smb["symbol"])["price"]) * smb["shares"])}}</td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="4">CASH</td>
+                <td>{{cash}}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

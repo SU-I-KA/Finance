@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Settings
+{% endblock %}
+
+{% block main %}
+    <form action="/settings" method="post">
+        <label for="password">Change Password</label>
+        <div class="form-group">
+            <input class="form-control" name="old-password" placeholder="Old Password" type="password">
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="new-password" placeholder="New Password" type="password">
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="confirm-password" placeholder="confirm Password" type="password">
+        </div>
+        <button class="btn btn-primary" type="submit">Save Changes</button>
+    </form>
+{% endblock %}
